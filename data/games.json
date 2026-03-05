@@ -1,0 +1,40 @@
+[
+  {
+    "code": "mimas",
+    "title": {
+      "en": "(WIP) Shadow Market",
+      "ko": "(WIP) Shadow Market"
+    },
+    "status": "playtest",
+    "version": "v0.5",
+    "summary": {
+      "en": "A compressed deduction/trading experiment using only cards, with no language elements.",
+      "ko": "언어 요소 없이 카드만으로 진행되는 압축형 추리/교환 실험."
+    },
+    "repo": "soongjin/p6388-mimas",
+    "image": "/images/games/mimas.png",
+    "downloads": {
+      "rulebook_asset": "rulebook.pdf",
+      "pnp_asset": "pnp.zip"
+    }
+  },
+  {
+    "code": "enceladus",
+    "title": {
+      "en": "(WIP) Ink Shift",
+      "ko": "(WIP) Ink Shift"
+    },
+    "status": "prototype",
+    "version": "v0.2",
+    "summary": {
+      "en": "A spatial movement mechanism experiment centered on elements that scatter when you try to catch them.",
+      "ko": "잡으려 하면 흩어지는 요소를 중심으로 한 공간 이동 메커니즘 실험."
+    },
+    "repo": "soongjin/p6388-enceladus",
+    "image": "/images/games/enceladus.png",
+    "downloads": {
+      "rulebook_asset": "rulebook.pdf",
+      "pnp_asset": "pnp.zip"
+    }
+  }
+]

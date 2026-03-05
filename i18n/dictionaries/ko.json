@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "about": "소개",
+    "games": "게임"
+  },
+  "footer": {
+    "copyright": "Project 6388"
+  },
+  "about": {
+    "title": "Project 6388",
+    "subtitle": "카드 기반 보드게임 실험 아카이브 — 메커니즘을 탐구하고, 프로토타입을 기록하고, 누구나 인쇄해서 플레이할 수 있도록 공유합니다.",
+    "whatIs": {
+      "heading": "What is Project 6388?",
+      "p1": "Project 6388은 개인이 운영하는 카드 기반 보드게임 실험 프로젝트입니다. 각 게임은 독립적으로 개발·버전 관리되며, 규칙서와 Print-and-Play(PnP) 파일을 통해 누구나 직접 인쇄하고 플레이할 수 있습니다.",
+      "p2": "\"6388\"은 표준 카드 크기인 63×88mm에서 따온 이름입니다."
+    },
+    "principles": {
+      "heading": "Design Principles",
+      "items": [
+        "언어 요소를 사용하지 않습니다 — 카드에 텍스트 없이 진행",
+        "대부분의 게임은 63×88mm 표준 카드만으로 구성됩니다",
+        "각 게임은 하나의 참신한 메커니즘 실험에 집중합니다",
+        "최소한의 구성품으로 최대한의 깊이를 추구합니다"
+      ]
+    },
+    "howItWorks": {
+      "heading": "How It Works",
+      "p1": "각 게임은 토성의 위성 이름을 코드명으로 사용합니다 (예: Mimas, Enceladus, Tethys). 코드명은 개발 과정에서의 식별자이며, 최종 게임 이름은 언제든 바뀔 수 있습니다.",
+      "p2": "게임별로 독립된 GitHub Repository가 존재하고, 각 릴리즈에 규칙서(PDF)와 PnP 파일(ZIP)이 첨부됩니다. 이 웹사이트는 해당 파일들에 대한 다운로드 링크만 제공하는 허브 역할을 합니다."
+    },
+    "releaseCycle": {
+      "heading": "Release Cycle",
+      "prototype": "Prototype — 초기 아이디어 검증 단계",
+      "playtest": "Playtest — 플레이테스트를 거치며 다듬는 단계",
+      "stable": "Stable — 안정적인 완성 버전"
+    }
+  },
+  "games": {
+    "title": "게임",
+    "subtitle": "현재 개발 중이거나 공개된 게임 목록입니다. 규칙서와 PnP 파일을 바로 다운로드할 수 있습니다.",
+    "filterAll": "전체",
+    "filterPrototype": "Prototype",
+    "filterPlaytest": "Playtest",
+    "filterStable": "Stable",
+    "filterLabel": "게임 상태 필터",
+    "emptyState": "해당 상태의 게임이 아직 없습니다.",
+    "downloadRulebook": "Rulebook",
+    "downloadPnp": "PnP",
+    "codename": "codename"
+  },
+  "meta": {
+    "siteDescription": "카드 기반 보드게임 실험 아카이브 — 언어 요소 없이 카드만으로 구성하는 메커니즘 실험 프로젝트.",
+    "aboutDescription": "Project 6388은 언어 요소 없이 카드만으로 구성하는 보드게임 메커니즘 실험 아카이브입니다.",
+    "gamesDescription": "Project 6388의 카드 기반 보드게임 실험 목록. 규칙서와 PnP 파일을 다운로드할 수 있습니다."
+  }
+}

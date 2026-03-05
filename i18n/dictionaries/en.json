@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "about": "About",
+    "games": "Games"
+  },
+  "footer": {
+    "copyright": "Project 6388"
+  },
+  "about": {
+    "title": "Project 6388",
+    "subtitle": "A card game experiment archive — exploring mechanisms, documenting prototypes, and sharing print-and-play files for anyone to try.",
+    "whatIs": {
+      "heading": "What is Project 6388?",
+      "p1": "Project 6388 is a personal card-based board game experiment project. Each game is independently developed and version-controlled, with rulebooks and Print-and-Play (PnP) files available for anyone to print and play.",
+      "p2": "\"6388\" comes from the standard card size: 63×88 mm."
+    },
+    "principles": {
+      "heading": "Design Principles",
+      "items": [
+        "No language elements — cards contain no text",
+        "Most games use only standard 63×88 mm cards",
+        "Each game focuses on one novel mechanism experiment",
+        "Minimal components, maximum depth"
+      ]
+    },
+    "howItWorks": {
+      "heading": "How It Works",
+      "p1": "Each game uses a Saturn moon name as its codename (e.g. Mimas, Enceladus, Tethys). Codenames are development identifiers — final game names may change at any time.",
+      "p2": "Each game has its own GitHub repository, and every release includes a rulebook (PDF) and PnP file (ZIP). This website serves as a hub, providing download links to those files."
+    },
+    "releaseCycle": {
+      "heading": "Release Cycle",
+      "prototype": "Prototype — early idea validation",
+      "playtest": "Playtest — iterating through playtesting",
+      "stable": "Stable — finalized release"
+    }
+  },
+  "games": {
+    "title": "Games",
+    "subtitle": "Games currently in development or publicly available. Download rulebooks and PnP files directly.",
+    "filterAll": "All",
+    "filterPrototype": "Prototype",
+    "filterPlaytest": "Playtest",
+    "filterStable": "Stable",
+    "filterLabel": "Filter by game status",
+    "emptyState": "No games found with this status.",
+    "downloadRulebook": "Rulebook",
+    "downloadPnp": "PnP",
+    "codename": "codename"
+  },
+  "meta": {
+    "siteDescription": "A card-based board game experiment archive — mechanism experiments built entirely from cards, no language elements.",
+    "aboutDescription": "Project 6388 is a board game mechanism experiment archive built entirely from cards, without language elements.",
+    "gamesDescription": "Card-based board game experiment list from Project 6388. Download rulebooks and PnP files."
+  }
+}
