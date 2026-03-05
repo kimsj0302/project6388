@@ -78,7 +78,10 @@ public/
     "repo": "<GITHUB_OWNER>/p6388-mimas",   // GitHub repo 전체 이름
     "image": "/images/games/mimas.png",     // (선택) 게임 카드 이미지
     "downloads": {
-      "rulebook_asset": "rulebook.pdf",     // Release 고정 파일명
+      "rulebooks": {                        // 언어별 규칙서 파일명
+        "en": "rulebook_en.pdf",            // 영어 규칙서 (필수)
+        "ko": "rulebook_ko.pdf"             // 한국어 규칙서 (선택)
+      },
       "pnp_asset": "pnp.zip"
     }
   }
@@ -96,7 +99,12 @@ public/
 https://github.com/<owner>/<repo>/releases/latest/download/<asset>
 ```
 
-이를 위해 **Release에 첨부하는 파일명은 항상 고정**합니다 (`rulebook.pdf`, `pnp.zip`).  
+이를 위해 **Release에 첨부하는 파일명은 항상 고정**합니다:
+
+- 규칙서(영어): `rulebook_en.pdf`
+- 규칙서(한국어): `rulebook_ko.pdf` (있을 때)
+- PnP(공용): `pnp.zip`
+
 버전 표기는 `games.json`의 `version` 필드로만 관리합니다.
 
 ## Maintenance Checklist
@@ -105,7 +113,7 @@ https://github.com/<owner>/<repo>/releases/latest/download/<asset>
 
 1. 코드명 선택 (토성 위성 이름, 예: `tethys`)
 2. GitHub repo 생성: `p6388-tethys`
-3. 첫 Release 생성 → `rulebook.pdf`, `pnp.zip` 첨부
+3. 첫 Release 생성 → `rulebook_en.pdf`, (선택) `rulebook_ko.pdf`, `pnp.zip` 첨부
 4. (선택) 게임 이미지를 `public/images/games/tethys.png`에 추가
 5. `data/games.json`에 항목 1개 추가 (`en` 필수, 다른 언어는 선택)
 6. Push → Vercel 자동 배포
@@ -113,7 +121,7 @@ https://github.com/<owner>/<repo>/releases/latest/download/<asset>
 ### 기존 게임 업데이트 (새 버전)
 
 1. 게임 repo에서 새 Release 생성
-2. 동일 파일명으로 `rulebook.pdf`, `pnp.zip` 업로드
+2. 동일 파일명으로 `rulebook_en.pdf`, (선택) `rulebook_ko.pdf`, `pnp.zip` 업로드
 3. `data/games.json`의 `version` 필드만 업데이트
 4. Push → Vercel 자동 배포
 

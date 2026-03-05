@@ -4,13 +4,50 @@ import { useState } from "react";
 import type { Game, GameStatus } from "@/lib/types";
 import { localize } from "@/lib/types";
 import type { Locale } from "@/i18n/config";
-import { getRulebookUrl, getPnpUrl, getRepoUrl } from "@/lib/downloads";
+import {
+  getRulebookLinks,
+  getPnpUrl,
+  getRepoUrl,
+  type RulebookLink,
+} from "@/lib/downloads";
 import type { Dictionary } from "@/i18n/get-dictionary";
 
 type GamesDict = Dictionary["games"];
 
 function StatusBadge({ status }: { status: GameStatus }) {
   return <span className={`badge badge-${status}`}>{status}</span>;
+}
+
+function RulebookButtons({
+  links,
+  dict,
+}: {
+  links: RulebookLink[];
+  dict: GamesDict;
+}) {
+  if (links.length === 0) return null;
+
+  return (
+    <>
+      {links.map((link) => (
+        <a
+          key={link.locale}
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary"
+        >
+          <span className="btn-icon" aria-hidden="true">
+            ↓
+          </span>
+          {dict.downloadRulebook}
+          <span className="btn-locale" aria-hidden="true">
+            {link.locale.toUpperCase()}
+          </span>
+        </a>
+      ))}
+    </>
+  );
 }
 
 function GameCard({
@@ -24,6 +61,7 @@ function GameCard({
 }) {
   const title = localize(game.title, locale);
   const summary = localize(game.summary, locale);
+  const rulebookLinks = getRulebookLinks(game);
 
   return (
     <article className="game-card">
@@ -43,17 +81,7 @@ function GameCard({
           {dict.codename}: {game.code}
         </p>
         <div className="game-actions">
-          <a
-            href={getRulebookUrl(game)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary"
-          >
-            <span className="btn-icon" aria-hidden="true">
-              ↓
-            </span>
-            {dict.downloadRulebook}
-          </a>
+          <RulebookButtons links={rulebookLinks} dict={dict} />
           <a
             href={getPnpUrl(game)}
             target="_blank"
