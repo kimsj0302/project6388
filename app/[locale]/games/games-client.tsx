@@ -4,12 +4,7 @@ import { useState } from "react";
 import type { Game, GameStatus } from "@/lib/types";
 import { localize } from "@/lib/types";
 import type { Locale } from "@/i18n/config";
-import {
-  getRulebookLinks,
-  getPnpUrl,
-  getRepoUrl,
-  type RulebookLink,
-} from "@/lib/downloads";
+import { getRulebookLinks, getPnpUrl, type RulebookLink } from "@/lib/downloads";
 import type { Dictionary } from "@/i18n/get-dictionary";
 
 type GamesDict = Dictionary["games"];
@@ -92,14 +87,6 @@ function GameCard({
               ↓
             </span>
             {dict.downloadPnp}
-          </a>
-          <a
-            href={getRepoUrl(game)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-secondary"
-          >
-            GitHub
           </a>
         </div>
       </div>

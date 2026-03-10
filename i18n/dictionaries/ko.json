@@ -33,6 +33,11 @@
       "prototype": "Prototype — 초기 아이디어 검증 단계",
       "playtest": "Playtest — 플레이테스트를 거치며 다듬는 단계",
       "stable": "Stable — 안정적인 완성 버전"
+    },
+    "designer": {
+      "heading": "Designer",
+      "name": "Soongjin Kim",
+      "label": "GitHub"
     }
   },
   "games": {
