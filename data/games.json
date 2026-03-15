@@ -6,16 +6,17 @@
       "ko": "세 보석"
     },
     "status": "playtest",
-    "version": "v0.3.1",
+    "version": "v0.3.2",
     "summary": {
-      "en": "Each turn you simultaneously submit a jewel; depending on whether it’s safe or dangerous you steal points from the center, but hitting 3+ warnings makes you lose points equal to the shared hidden pile.",
-      "ko": "매 턴 동시에 보석을 제출하고 “안전/위험” 판정에 따라 중앙 보석을 털어 점수를 쌓되, 경고 3장 이상이면 숨긴 더미 점수만큼 감점되는 경쟁 게임."
+      "en": "Three Gems: steal jewels by playing into zones without police; everyone submits one card at a time, and the board and police shift as cards are resolved.",
+      "ko": "Three Gems는 보석을 훔치기 위해 경찰이 없는 안전한 구역을 노리며 카드를 동시에 제출하고, 경찰을 피해 득점을 쌓는 카드 게임이다."
     },
     "repo": "kimsj0302/p6388-mimas",
     "image": "/images/games/mimas.png",
     "downloads": {
       "rulebooks": {
-        "ko": "rulebook_ko.pdf"
+        "ko": "rulebook_ko.pdf",
+        "en": "rulebook_en.pdf"
       },
       "pnp_asset": "pnp.pdf"
     }
