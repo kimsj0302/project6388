@@ -47,6 +47,15 @@ export default async function LocaleLayout({
                 <li>
                   <Link href={`/${locale}/games`}>{dict.nav.games}</Link>
                 </li>
+                <li>
+                  <a
+                    href="https://forms.gle/XWPZAQaP4jHToci6A"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {dict.nav.feedback}
+                  </a>
+                </li>
               </ul>
               <LanguageSwitcher currentLocale={locale as Locale} />
             </div>

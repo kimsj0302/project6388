@@ -1,7 +1,8 @@
 {
   "nav": {
     "about": "About",
-    "games": "Games"
+    "games": "Games",
+    "feedback": "Feedback"
   },
   "footer": {
     "copyright": "Project 6388"
@@ -50,7 +51,9 @@
     "emptyState": "No games found with this status.",
     "downloadRulebook": "Rulebook",
     "downloadPnp": "PnP",
-    "codename": "codename"
+    "codename": "codename",
+    "feedbackMessage": "Taking a quick survey after playing helps a lot with game development.",
+    "feedbackLink": "Feedback"
   },
   "meta": {
     "siteDescription": "A card-based board game experiment archive — mechanism experiments built entirely from cards, no language elements.",

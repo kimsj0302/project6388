@@ -28,7 +28,7 @@
       "ko": "Trawl"
     },
     "status": "prototype",
-    "version": "v0.1.0",
+    "version": "v0.1.1",
     "summary": {
       "en": "Trawl is a bluffing net-haul game where only you see the cards you move, then force chain repositions to land on the best pocket at reveal.",
       "ko": "Trawl은 내가 옮기는 카드만 확인할 수 있는 카드 만칼라로 판을 속이고, 연쇄 재배치로 유리한 그물 칸을 차지해 공개 정산에서 점수를 얻는 블러핑 게임이다."
@@ -37,7 +37,8 @@
     "image": "/images/games/enceladus.png",
     "downloads": {
       "rulebooks": {
-        "ko": "rulebook_ko.pdf"
+        "ko": "Trawl_Rule_v0.7_KR.pdf",
+        "en": "Trawl_Rule_v0.7_EN.pdf"
       },
       "pnp_asset": "pnp.pdf"
     }

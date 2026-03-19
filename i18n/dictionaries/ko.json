@@ -1,7 +1,8 @@
 {
   "nav": {
     "about": "소개",
-    "games": "게임"
+    "games": "게임",
+    "feedback": "피드백"
   },
   "footer": {
     "copyright": "Project 6388"
@@ -50,7 +51,9 @@
     "emptyState": "해당 상태의 게임이 아직 없습니다.",
     "downloadRulebook": "Rulebook",
     "downloadPnp": "PnP",
-    "codename": "codename"
+    "codename": "codename",
+    "feedbackMessage": "게임 플레이 후 설문조사를 해주시면 게임 개발에 큰 도움이 됩니다.",
+    "feedbackLink": "피드백"
   },
   "meta": {
     "siteDescription": "카드 기반 보드게임 실험 아카이브 — 언어 요소 없이 카드만으로 구성하는 메커니즘 실험 프로젝트.",
