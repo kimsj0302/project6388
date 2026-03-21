@@ -6,7 +6,6 @@
       "ko": "세 보석"
     },
     "status": "playtest",
-    "version": "v0.3.2",
     "summary": {
       "en": "Three Gems: steal jewels by playing into zones without police; everyone submits one card at a time, and the board and police shift as cards are resolved.",
       "ko": "Three Gems는 보석을 훔치기 위해 경찰이 없는 안전한 구역을 노리며 카드를 동시에 제출하고, 경찰을 피해 득점을 쌓는 카드 게임이다."
@@ -28,7 +27,6 @@
       "ko": "Trawl"
     },
     "status": "prototype",
-    "version": "v0.1.1",
     "summary": {
       "en": "Trawl is a bluffing net-haul game where only you see the cards you move, then force chain repositions to land on the best pocket at reveal.",
       "ko": "Trawl은 내가 옮기는 카드만 확인할 수 있는 카드 만칼라로 판을 속이고, 연쇄 재배치로 유리한 그물 칸을 차지해 공개 정산에서 점수를 얻는 블러핑 게임이다."
@@ -37,8 +35,8 @@
     "image": "/images/games/enceladus.png",
     "downloads": {
       "rulebooks": {
-        "ko": "Trawl_Rule_v0.7_KR.pdf",
-        "en": "Trawl_Rule_v0.7_EN.pdf"
+        "ko": "rulebook_ko.pdf",
+        "en": "rulebook_en.pdf"
       },
       "pnp_asset": "pnp.pdf"
     }

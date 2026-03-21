@@ -27,7 +27,7 @@ export interface Game {
   code: string;
   title: LocalizedString;
   status: GameStatus;
-  version: string;
+  version?: string;
   summary: LocalizedString;
   repo: string;
   image?: string;

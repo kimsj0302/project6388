@@ -3,7 +3,33 @@ import type { Game } from "@/lib/types";
 import { locales, type Locale } from "@/i18n/config";
 import gamesData from "@/data/games.json";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { hydrateLatestVersions } from "@/lib/github-releases";
 import { GamesClient } from "./games-client";
+
+type GameEntry = Omit<Game, "downloads"> & {
+  downloads?: Game["downloads"];
+};
+
+type GamesDataFile = {
+  commonDownloads: Game["downloads"];
+  games: GameEntry[];
+};
+
+function normalizeGames(input: unknown): Game[] {
+  if (Array.isArray(input)) {
+    return input as Game[];
+  }
+
+  const data = input as Partial<GamesDataFile>;
+  if (!data.games || !Array.isArray(data.games) || !data.commonDownloads) {
+    return [];
+  }
+
+  return data.games.map((game) => ({
+    ...game,
+    downloads: game.downloads ?? data.commonDownloads!,
+  })) as Game[];
+}
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -29,7 +55,8 @@ export default async function GamesPage({
 }) {
   const { locale } = await params;
   const dict = getDictionary(locale as Locale);
-  const games = gamesData as Game[];
+  const mergedGames = normalizeGames(gamesData);
+  const games = await hydrateLatestVersions(mergedGames);
 
   return (
     <>
