@@ -1,13 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Game, GameStatus } from "@/lib/types";
 import { localize } from "@/lib/types";
 import type { Locale } from "@/i18n/config";
-import { getRulebookLinks, getPnpUrl, type RulebookLink } from "@/lib/downloads";
+import {
+  getCardInfoUrl,
+  getRulebookLinks,
+  getPnpUrl,
+  type RulebookLink,
+} from "@/lib/downloads";
 import type { Dictionary } from "@/i18n/get-dictionary";
 
 type GamesDict = Dictionary["games"];
+
+interface GitHubLatestRelease {
+  tag_name?: string;
+}
 
 function StatusBadge({ status }: { status: GameStatus }) {
   return <span className={`badge badge-${status}`}>{status}</span>;
@@ -57,6 +66,7 @@ function GameCard({
   const title = localize(game.title, locale);
   const summary = localize(game.summary, locale);
   const rulebookLinks = getRulebookLinks(game);
+  const cardInfoUrl = getCardInfoUrl(game);
 
   return (
     <article className="game-card">
@@ -88,6 +98,19 @@ function GameCard({
             </span>
             {dict.downloadPnp}
           </a>
+          {cardInfoUrl && (
+            <a
+              href={cardInfoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary"
+            >
+              <span className="btn-icon" aria-hidden="true">
+                ↓
+              </span>
+              Card Info
+            </a>
+          )}
         </div>
       </div>
     </article>
@@ -104,6 +127,46 @@ export function GamesClient({
   dict: GamesDict;
 }) {
   const [filter, setFilter] = useState<string>("all");
+  const [versionedGames, setVersionedGames] = useState<Game[]>(games);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function refreshLatestVersions() {
+      const nextGames = await Promise.all(
+        games.map(async (game) => {
+          try {
+            const response = await fetch(
+              `https://api.github.com/repos/${game.repo}/releases/latest`,
+              {
+                headers: {
+                  Accept: "application/vnd.github+json",
+                  "X-GitHub-Api-Version": "2022-11-28",
+                },
+                signal: controller.signal,
+              }
+            );
+
+            if (!response.ok) return game;
+
+            const release = (await response.json()) as GitHubLatestRelease;
+            return release.tag_name ? { ...game, version: release.tag_name } : game;
+          } catch {
+            return game;
+          }
+        })
+      );
+
+      if (!controller.signal.aborted) {
+        setVersionedGames(nextGames);
+      }
+    }
+
+    setVersionedGames(games);
+    refreshLatestVersions();
+
+    return () => controller.abort();
+  }, [games]);
 
   const filterOptions: { key: string; label: string }[] = [
     { key: "all", label: dict.filterAll },
@@ -113,7 +176,9 @@ export function GamesClient({
   ];
 
   const filtered =
-    filter === "all" ? games : games.filter((g) => g.status === filter);
+    filter === "all"
+      ? versionedGames
+      : versionedGames.filter((g) => g.status === filter);
 
   return (
     <>

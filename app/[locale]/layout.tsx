@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { spaceGrotesk } from "@/app/fonts";
 import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { LanguageSwitcher } from "./language-switcher";
@@ -36,7 +37,16 @@ export default async function LocaleLayout({
       <body>
         <nav className="nav">
           <div className="nav-inner">
-            <Link href={`/${locale}`} className="nav-logo">
+            <Link
+              href={`/${locale}`}
+              className={`${spaceGrotesk.className} nav-logo`}
+            >
+              <img
+                src="/images/project6388_transparent.webp"
+                alt=""
+                className="nav-logo-mark"
+                aria-hidden="true"
+              />
               Project 6388
             </Link>
             <div className="nav-right">

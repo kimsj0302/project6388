@@ -1,29 +1,39 @@
 import type { Game } from "./types";
 
-interface GithubReleaseResponse {
+interface GitHubLatestRelease {
   tag_name?: string;
 }
 
-async function fetchLatestTag(repo: string): Promise<string | null> {
-  const response = await fetch(`https://api.github.com/repos/${repo}/releases/latest`, {
-    headers: {
-      Accept: "application/vnd.github+json",
-    },
-  });
+async function getLatestReleaseTag(repo: string): Promise<string | null> {
+  const response = await fetch(
+    `https://api.github.com/repos/${repo}/releases/latest`,
+    {
+      headers: {
+        Accept: "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+    }
+  );
 
   if (!response.ok) {
     return null;
   }
 
-  const data = (await response.json()) as GithubReleaseResponse;
-  return data.tag_name ?? null;
+  const release = (await response.json()) as GitHubLatestRelease;
+  return release.tag_name ?? null;
 }
 
-export async function hydrateLatestVersions(games: Game[]): Promise<Game[]> {
-  const tags = await Promise.all(games.map((game) => fetchLatestTag(game.repo)));
+export async function withLatestReleaseVersions(games: Game[]): Promise<Game[]> {
+  const entries = await Promise.all(
+    games.map(async (game) => {
+      try {
+        const version = await getLatestReleaseTag(game.repo);
+        return version ? { ...game, version } : game;
+      } catch {
+        return game;
+      }
+    })
+  );
 
-  return games.map((game, index) => ({
-    ...game,
-    version: tags[index] ?? game.version ?? "",
-  }));
+  return entries;
 }

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import type { Game } from "@/lib/types";
+import { withLatestReleaseVersions } from "@/lib/github-releases";
 import { locales, type Locale } from "@/i18n/config";
 import gamesData from "@/data/games.json";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { hydrateLatestVersions } from "@/lib/github-releases";
 import { GamesClient } from "./games-client";
 
 type GameEntry = Omit<Game, "downloads"> & {
@@ -56,7 +56,7 @@ export default async function GamesPage({
   const { locale } = await params;
   const dict = getDictionary(locale as Locale);
   const mergedGames = normalizeGames(gamesData);
-  const games = await hydrateLatestVersions(mergedGames);
+  const games = await withLatestReleaseVersions(mergedGames);
 
   return (
     <>

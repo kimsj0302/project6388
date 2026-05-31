@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { spaceGrotesk } from "@/app/fonts";
 import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 
@@ -31,7 +32,15 @@ export default async function AboutPage({
   return (
     <>
       <section className="hero">
-        <h1>{t.title}</h1>
+        <div className="hero-title">
+          <img
+            src="/images/project6388_transparent.webp"
+            alt=""
+            className="hero-logo-mark"
+            aria-hidden="true"
+          />
+          <h1 className={spaceGrotesk.className}>{t.title}</h1>
+        </div>
         <p>{t.subtitle}</p>
       </section>
 

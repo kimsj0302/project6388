@@ -1,9 +1,9 @@
-import type { Game } from "./types";
-import type { Locale } from "@/i18n/config";
-import { defaultLocale, isValidLocale } from "@/i18n/config";
+import type { Game, RulebookLocale } from "./types";
+import { isValidRulebookLocale } from "./types";
+import { defaultLocale } from "@/i18n/config";
 
 export interface RulebookLink {
-  locale: Locale;
+  locale: RulebookLocale;
   url: string;
 }
 
@@ -14,8 +14,8 @@ export function getRulebookLinks(game: Game): RulebookLink[] {
   if (downloads.rulebooks) {
     return Object.entries(downloads.rulebooks)
       .filter(
-        (entry): entry is [Locale, string] =>
-          isValidLocale(entry[0]) && Boolean(entry[1])
+        (entry): entry is [RulebookLocale, string] =>
+          isValidRulebookLocale(entry[0]) && Boolean(entry[1])
       )
       .map(([locale, filename]) => ({
         locale,
@@ -38,6 +38,14 @@ export function getRulebookLinks(game: Game): RulebookLink[] {
 
 export function getPnpUrl(game: Game): string {
   return `https://github.com/${game.repo}/releases/latest/download/${game.downloads.pnp_asset}`;
+}
+
+export function getCardInfoUrl(game: Game): string | null {
+  if (!game.downloads.card_info_asset) {
+    return null;
+  }
+
+  return `https://github.com/${game.repo}/releases/download/${game.version}/${game.downloads.card_info_asset}`;
 }
 
 export function getRepoUrl(game: Game): string {
