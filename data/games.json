@@ -44,5 +44,27 @@
       "card_info_asset": "cards_card_info.png",
       "pnp_asset": "pnp.pdf"
     }
+  },
+  {
+    "code": "dione",
+    "title": {
+      "en": "Being Hero",
+      "ko": "Being Hero"
+    },
+    "status": "prototype",
+    "version": "v0.0.2",
+    "summary": {
+      "en": "Being Hero is a climbing/shedding survival card game where players manage light and dark cards, risk entering Rage through repeated passes, and try to keep the lowest penalty score over three rounds.",
+      "ko": "Being Hero는 패스를 반복하면 분노와 탈락 위험이 커지는 구조 속에서, 밝은면/어두운면 카드를 관리하며 3판 동안 벌점을 최소화하는 클라이밍·셰딩 생존 카드게임입니다."
+    },
+    "repo": "kimsj0302/p6388-dione",
+    "image": "/images/games/dione.png",
+    "downloads": {
+      "rulebooks": {
+        "ko": "rulebook_ko.pdf"
+      },
+      "card_info_asset": "Dione_card_info.png",
+      "pnp_asset": "pnp.pdf"
+    }
   }
 ]
