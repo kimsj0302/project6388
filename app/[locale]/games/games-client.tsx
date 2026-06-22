@@ -22,6 +22,12 @@ function StatusBadge({ status }: { status: GameStatus }) {
   return <span className={`badge badge-${status}`}>{status}</span>;
 }
 
+const specItems = [
+  { key: "players", icon: "/images/game-specs/players.png", label: "Players" },
+  { key: "playTime", icon: "/images/game-specs/play-time.png", label: "Play time" },
+  { key: "age", icon: "/images/game-specs/age.png", label: "Age" },
+] as const;
+
 function RulebookButtons({
   links,
   dict,
@@ -81,6 +87,19 @@ function GameCard({
           <StatusBadge status={game.status} />
         </div>
         <span className="game-version">{game.version}</span>
+        {game.specs && (
+          <dl className="game-specs" aria-label="Game information">
+            {specItems.map(({ key, icon, label }) => (
+              <div className="game-spec" key={key}>
+                <dt>
+                  <img src={icon} alt="" aria-hidden="true" />
+                  <span className="sr-only">{label}</span>
+                </dt>
+                <dd>{game.specs?.[key]}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
         <p className="game-summary">{summary}</p>
         <p className="game-codename">
           {dict.codename}: {game.code}

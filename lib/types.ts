@@ -28,6 +28,12 @@ export interface GameDownloads {
   pnp_asset: string;
 }
 
+export interface GameSpecs {
+  players: string;
+  playTime: string;
+  age: string;
+}
+
 export interface Game {
   code: string;
   title: LocalizedString;
@@ -36,6 +42,7 @@ export interface Game {
   summary: LocalizedString;
   repo: string;
   image?: string;
+  specs?: GameSpecs;
   downloads: GameDownloads;
 }
 

@@ -13,6 +13,11 @@
     },
     "repo": "kimsj0302/p6388-mimas",
     "image": "/images/games/mimas.png",
+    "specs": {
+      "players": "3~4",
+      "playTime": "10~15 min",
+      "age": "14+"
+    },
     "downloads": {
       "rulebooks": {
         "ko": "rulebook_ko.pdf",
@@ -35,6 +40,11 @@
     },
     "repo": "kimsj0302/p6388-enceladus",
     "image": "/images/games/enceladus.png",
+    "specs": {
+      "players": "3~5",
+      "playTime": "10~15 min",
+      "age": "14+"
+    },
     "downloads": {
       "rulebooks": {
         "ko": "rulebook_KO.pdf",
@@ -59,6 +69,11 @@
     },
     "repo": "kimsj0302/p6388-dione",
     "image": "/images/games/dione.png",
+    "specs": {
+      "players": "3~4",
+      "playTime": "10~15 min",
+      "age": "14+"
+    },
     "downloads": {
       "rulebooks": {
         "ko": "rulebook_ko.pdf"
