@@ -41,7 +41,6 @@ export default async function AboutPage({
           />
           <h1 className={spaceGrotesk.className}>{t.title}</h1>
         </div>
-        <p>{t.subtitle}</p>
       </section>
 
       <section className="about-section">

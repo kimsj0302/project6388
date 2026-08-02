@@ -9,18 +9,18 @@
   },
   "about": {
     "title": "Project 6388",
-    "subtitle": "A card game experiment archive — exploring mechanisms, documenting prototypes, and sharing print-and-play files for anyone to try.",
     "whatIs": {
       "heading": "What is Project 6388?",
-      "p1": "Project 6388 is a personal card-based board game experiment project. Each game is independently developed and version-controlled, with rulebooks and Print-and-Play (PnP) files available for anyone to print and play.",
+      "p1": "Project 6388 is a personal project for making card games that three or more people can enjoy together. We document both finished games and rules still being tested, and share their rulebooks and Print-and-Play (PnP) files for anyone to print and play.",
       "p2": "\"6388\" comes from the standard card size: 63×88 mm."
     },
     "principles": {
       "heading": "Design Principles",
       "items": [
-        "No language elements — cards contain no text",
-        "Most games use only standard 63×88 mm cards",
-        "Minimal components, maximum depth"
+        "Games for three or more players",
+        "Cards that work without words",
+        "Built around standard 63×88 mm cards",
+        "Meaningful choices and depth from a small set of components"
       ]
     },
     "howItWorks": {
