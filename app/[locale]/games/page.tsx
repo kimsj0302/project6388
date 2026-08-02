@@ -70,7 +70,7 @@ export default async function GamesPage({
       <div className="feedback-banner">
         <p>{dict.games.feedbackMessage}</p>
         <a
-          href="https://FEEDBACK_FORM_URL"
+          href="https://forms.gle/XWPZAQaP4jHToci6A"
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-primary"
