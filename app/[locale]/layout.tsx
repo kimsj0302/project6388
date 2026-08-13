@@ -47,13 +47,10 @@ export default async function LocaleLayout({
                 className="nav-logo-mark"
                 aria-hidden="true"
               />
-              Project 6388
+              PROJECT 6388
             </Link>
             <div className="nav-right">
               <ul className="nav-links">
-                <li>
-                  <Link href={`/${locale}`}>{dict.nav.about}</Link>
-                </li>
                 <li>
                   <Link href={`/${locale}/games`}>{dict.nav.games}</Link>
                 </li>

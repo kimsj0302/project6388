@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { spaceGrotesk } from "@/app/fonts";
 import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import gamesData from "@/data/games.json";
+import { getCatalogNumber, normalizeGames } from "@/lib/games";
+import { localize } from "@/lib/types";
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -15,7 +19,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const dict = getDictionary(locale as Locale);
   return {
-    title: `About — Project 6388`,
+    title: "Project 6388",
     description: dict.meta.aboutDescription,
   };
 }
@@ -28,60 +32,60 @@ export default async function AboutPage({
   const { locale } = await params;
   const dict = getDictionary(locale as Locale);
   const t = dict.about;
+  const games = normalizeGames(gamesData);
 
   return (
     <>
-      <section className="hero">
-        <div className="hero-title">
-          <img
-            src="/images/project6388_transparent.webp"
-            alt=""
-            className="hero-logo-mark"
-            aria-hidden="true"
-          />
-          <h1 className={spaceGrotesk.className}>{t.title}</h1>
+      <section className="catalogue-hero">
+        <div className="catalogue-hero-title">
+          <div className="catalogue-hero-lockup">
+            <img
+              src="/images/project6388_transparent.webp"
+              alt=""
+              className="catalogue-hero-mark"
+              aria-hidden="true"
+            />
+            <h1 className={spaceGrotesk.className}>PROJECT 6388</h1>
+          </div>
         </div>
+        <p>{dict.meta.aboutDescription}</p>
       </section>
 
-      <section className="about-section">
+      <section className="home-catalogue" aria-label={dict.games.title}>
+        {games.map((game, index) => {
+          const title = localize(game.title, locale as Locale);
+
+          return (
+            <Link
+              href={`/${locale}/games`}
+              className="home-catalogue-item"
+              key={game.code}
+            >
+              <span className="catalogue-number">
+                {getCatalogNumber(index)}
+              </span>
+              <span className="home-catalogue-title">{title}</span>
+              <span className="home-catalogue-code">{game.code}</span>
+              {game.image && <img src={game.image} alt={title} />}
+            </Link>
+          );
+        })}
+      </section>
+
+      <hr className="divider" />
+
+      <section className="about-section" id="about">
         <h2>{t.whatIs.heading}</h2>
         <p>{t.whatIs.p1}</p>
         <p>{t.whatIs.p2}</p>
       </section>
 
-      <hr className="divider" />
-
-      <section className="about-section">
+      <section className="about-section about-section-compact">
         <h2>{t.principles.heading}</h2>
         <ul>
           {t.principles.items.map((item, i) => (
             <li key={i}>{item}</li>
           ))}
-        </ul>
-      </section>
-
-      <hr className="divider" />
-
-      <section className="about-section">
-        <h2>{t.howItWorks.heading}</h2>
-        <p>{t.howItWorks.p1}</p>
-        <p>{t.howItWorks.p2}</p>
-      </section>
-
-      <hr className="divider" />
-
-      <section className="about-section">
-        <h2>{t.releaseCycle.heading}</h2>
-        <ul>
-          <li>
-            <strong>Prototype</strong> — {t.releaseCycle.prototype.split(" — ")[1]}
-          </li>
-          <li>
-            <strong>Playtest</strong> — {t.releaseCycle.playtest.split(" — ")[1]}
-          </li>
-          <li>
-            <strong>Stable</strong> — {t.releaseCycle.stable.split(" — ")[1]}
-          </li>
         </ul>
       </section>
 

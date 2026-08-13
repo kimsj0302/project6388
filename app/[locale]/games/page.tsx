@@ -1,35 +1,10 @@
 import type { Metadata } from "next";
-import type { Game } from "@/lib/types";
 import { withLatestReleaseVersions } from "@/lib/github-releases";
 import { locales, type Locale } from "@/i18n/config";
 import gamesData from "@/data/games.json";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { normalizeGames } from "@/lib/games";
 import { GamesClient } from "./games-client";
-
-type GameEntry = Omit<Game, "downloads"> & {
-  downloads?: Game["downloads"];
-};
-
-type GamesDataFile = {
-  commonDownloads: Game["downloads"];
-  games: GameEntry[];
-};
-
-function normalizeGames(input: unknown): Game[] {
-  if (Array.isArray(input)) {
-    return input as Game[];
-  }
-
-  const data = input as Partial<GamesDataFile>;
-  if (!data.games || !Array.isArray(data.games) || !data.commonDownloads) {
-    return [];
-  }
-
-  return data.games.map((game) => ({
-    ...game,
-    downloads: game.downloads ?? data.commonDownloads!,
-  })) as Game[];
-}
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

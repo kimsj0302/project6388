@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { Game, GameStatus } from "@/lib/types";
 import { localize } from "@/lib/types";
+import { getCatalogNumber } from "@/lib/games";
 import type { Locale } from "@/i18n/config";
 import {
   getCardInfoUrl,
@@ -18,15 +19,13 @@ interface GitHubLatestRelease {
   tag_name?: string;
 }
 
-function StatusBadge({ status }: { status: GameStatus }) {
-  return <span className={`badge badge-${status}`}>{status}</span>;
+function StatusLabel({ status }: { status: GameStatus }) {
+  return <span className={`status-label status-label-${status}`}>{status}</span>;
 }
 
-const specItems = [
-  { key: "players", icon: "/images/game-specs/players.png", label: "Players" },
-  { key: "playTime", icon: "/images/game-specs/play-time.png", label: "Play time" },
-  { key: "age", icon: "/images/game-specs/age.png", label: "Age" },
-] as const;
+function compactSpec(value: string): string {
+  return value.replace(/~/g, "-").replace(/\s*min$/i, "");
+}
 
 function RulebookButtons({
   links,
@@ -46,14 +45,9 @@ function RulebookButtons({
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-primary"
+          aria-label={`${dict.downloadRulebook} ${link.locale.toUpperCase()}`}
         >
-          <span className="btn-icon" aria-hidden="true">
-            ↓
-          </span>
-          {dict.downloadRulebook}
-          <span className="btn-locale" aria-hidden="true">
-            {link.locale.toUpperCase()}
-          </span>
+          {link.locale.toUpperCase()}
         </a>
       ))}
     </>
@@ -62,10 +56,12 @@ function RulebookButtons({
 
 function GameCard({
   game,
+  index,
   locale,
   dict,
 }: {
   game: Game;
+  index: number;
   locale: Locale;
   dict: GamesDict;
 }) {
@@ -76,62 +72,77 @@ function GameCard({
 
   return (
     <article className="game-card">
+      <div className="game-card-body">
+        <div className="game-card-top">
+          <p className="catalogue-number">{getCatalogNumber(index)}</p>
+          <p className="game-codename">{game.code}</p>
+        </div>
+        <div>
+          <h3>{title}</h3>
+          <p className="game-state">
+            <StatusLabel status={game.status} />
+            {game.version && <span>{game.version}</span>}
+          </p>
+        </div>
+        {game.specs && (
+          <dl className="game-specs" aria-label="Game information">
+            <div className="game-spec">
+              <dt>PLAYERS</dt>
+              <dd>{compactSpec(game.specs.players)}</dd>
+            </div>
+            <div className="game-spec">
+              <dt>TIME</dt>
+              <dd>{compactSpec(game.specs.playTime)} MIN</dd>
+            </div>
+            <div className="game-spec">
+              <dt>AGE</dt>
+              <dd>{compactSpec(game.specs.age)}</dd>
+            </div>
+          </dl>
+        )}
+        <p className="game-summary">{summary}</p>
+        <div className="game-actions">
+          <div className="game-action-row">
+            <span className="game-action-label">{dict.downloadRulebook}</span>
+            <span className="game-action-links">
+              <RulebookButtons links={rulebookLinks} dict={dict} />
+            </span>
+          </div>
+          <div className="game-action-row">
+            <span className="game-action-label">{dict.downloadPnp}</span>
+            <span className="game-action-links">
+              <a
+                href={getPnpUrl(game)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
+                PDF
+              </a>
+            </span>
+          </div>
+          {cardInfoUrl && (
+            <div className="game-action-row">
+              <span className="game-action-label">Card Info</span>
+              <span className="game-action-links">
+                <a
+                  href={cardInfoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  PNG
+                </a>
+              </span>
+            </div>
+          )}
+        </div>
+      </div>
       {game.image && (
         <div className="game-card-image">
           <img src={game.image} alt={title} />
         </div>
       )}
-      <div className="game-card-body">
-        <div className="game-card-top">
-          <h3>{title}</h3>
-          <StatusBadge status={game.status} />
-        </div>
-        <span className="game-version">{game.version}</span>
-        {game.specs && (
-          <dl className="game-specs" aria-label="Game information">
-            {specItems.map(({ key, icon, label }) => (
-              <div className="game-spec" key={key}>
-                <dt>
-                  <img src={icon} alt="" aria-hidden="true" />
-                  <span className="sr-only">{label}</span>
-                </dt>
-                <dd>{game.specs?.[key]}</dd>
-              </div>
-            ))}
-          </dl>
-        )}
-        <p className="game-summary">{summary}</p>
-        <p className="game-codename">
-          {dict.codename}: {game.code}
-        </p>
-        <div className="game-actions">
-          <RulebookButtons links={rulebookLinks} dict={dict} />
-          <a
-            href={getPnpUrl(game)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary"
-          >
-            <span className="btn-icon" aria-hidden="true">
-              ↓
-            </span>
-            {dict.downloadPnp}
-          </a>
-          {cardInfoUrl && (
-            <a
-              href={cardInfoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-secondary"
-            >
-              <span className="btn-icon" aria-hidden="true">
-                ↓
-              </span>
-              Card Info
-            </a>
-          )}
-        </div>
-      </div>
     </article>
   );
 }
@@ -217,7 +228,13 @@ export function GamesClient({
       {filtered.length > 0 ? (
         <div className="games-grid">
           {filtered.map((game) => (
-            <GameCard key={game.code} game={game} locale={locale} dict={dict} />
+            <GameCard
+              key={game.code}
+              game={game}
+              index={games.findIndex((item) => item.code === game.code)}
+              locale={locale}
+              dict={dict}
+            />
           ))}
         </div>
       ) : (
