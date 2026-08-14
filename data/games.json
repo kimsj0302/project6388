@@ -81,5 +81,32 @@
       "card_info_asset": "Dione_card_info.png",
       "pnp_asset": "pnp.pdf"
     }
+  },
+  {
+    "code": "iapetus",
+    "title": {
+      "en": "Multi-fly",
+      "ko": "Multi-fly"
+    },
+    "status": "prototype",
+    "version": "v0.1.0",
+    "summary": {
+      "en": "Iapetus is a product-combination card game where players beat the previous pair with a higher product or match its result digits to seize the lead.",
+      "ko": "Multi-fly는 두 숫자의 곱을 이용하는 카드게임입니다. 이전 조합보다 더 큰 곱을 내거나 결과 숫자를 맞춰 주도권을 가져갑니다."
+    },
+    "repo": "kimsj0302/p6388-iapetus",
+    "image": "/images/games/iapetus.png",
+    "specs": {
+      "players": "3~4",
+      "playTime": "10~15 min",
+      "age": "14+"
+    },
+    "downloads": {
+      "rulebooks": {
+        "ko": "rulebook_ko.pdf"
+      },
+      "card_info_asset": "Iapetus_card_info.png",
+      "pnp_asset": "pnp.pdf"
+    }
   }
 ]
