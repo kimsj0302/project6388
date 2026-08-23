@@ -62,7 +62,7 @@
       "ko": "Being Hero"
     },
     "status": "prototype",
-    "version": "v0.0.2",
+    "version": "v0.1.0",
     "summary": {
       "en": "Being Hero is a climbing/shedding survival card game where players manage light and dark cards, risk entering Rage through repeated passes, and try to keep the lowest penalty score over three rounds.",
       "ko": "Being Hero는 패스를 반복하면 분노와 탈락 위험이 커지는 구조 속에서, 밝은면/어두운면 카드를 관리하며 3판 동안 벌점을 최소화하는 클라이밍·셰딩 생존 카드게임입니다."
