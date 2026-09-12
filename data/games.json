@@ -108,5 +108,32 @@
       "card_info_asset": "Iapetus_card_info.png",
       "pnp_asset": "pnp.pdf"
     }
+  },
+  {
+    "code": "titan",
+    "title": {
+      "en": "Three Frames: Nature in Focus",
+      "ko": "Three Frames: Nature in Focus"
+    },
+    "status": "prototype",
+    "version": "v0.3.0",
+    "summary": {
+      "en": "Three Frames: Nature in Focus is a card game about taking three striking nature photographs by placing animal cards, then completing matching tree-card scenes.",
+      "ko": "나무와 동물들을 배치하고 가장 훌륭한 3장의 사진을 찍는 게임입니다."
+    },
+    "repo": "kimsj0302/p6388-titan",
+    "image": "/images/games/titan.png",
+    "specs": {
+      "players": "1~4",
+      "playTime": "15",
+      "age": "7+"
+    },
+    "downloads": {
+      "rulebooks": {
+        "ko": "rulebook_KO.pdf"
+      },
+      "card_info_asset": "Titan_card_info.png",
+      "pnp_asset": "pnp.pdf"
+    }
   }
 ]

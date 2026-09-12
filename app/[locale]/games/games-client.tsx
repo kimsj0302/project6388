@@ -101,7 +101,8 @@ function GameCard({
           </dl>
         )}
         <p className="game-summary">{summary}</p>
-        <div className="game-actions">
+        {game.version && (
+          <div className="game-actions">
           <div className="game-action-row">
             <span className="game-action-label">{dict.downloadRulebook}</span>
             <span className="game-action-links">
@@ -136,7 +137,8 @@ function GameCard({
               </span>
             </div>
           )}
-        </div>
+          </div>
+        )}
       </div>
       {game.image && (
         <div className="game-card-image">
